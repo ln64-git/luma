@@ -1,0 +1,1 @@
+We were both drowning, but neither of us wanted to swim. Just sinking together. She touched my hand and said “Finally.” Then let go first. I didn’t try to grab her.

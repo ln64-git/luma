@@ -1,0 +1,1 @@
+I found a note in her handwriting tucked into a book I never finished. It just said, “You didn’t stay gone. You stayed silent.” I didn’t know what that meant until I woke up and couldn’t breathe.
