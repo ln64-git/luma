@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "\"# Contributing\\n\\nHey, thanks for wanting to contribute.\\n\\nBefore you open a PR, make sure to open an issue and discuss the problem you want to solve. I will not consider PRs without issues.\\n\\nI use [gitmoji](https://gitmoji.dev/) for my commit messages because I think it's fun. I encourage you to do the same, but won't enforce it.\\n\\nI check PRs and issues very rarely so please be patient.\\n\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -169,18 +170,41 @@
   },
   "active": "8c784f7bb39f1fc3",
   "lastOpenFiles": [
-    "luma-log.json",
-    "logs",
-    "Dream 1.md",
-    "Untitled.md",
-    "Dream 3.md",
-    "Dream 7.md",
-    "Dream 10.md",
-    "Dream 6.md",
-    "Dream 4.md",
-    "Dream 2.md",
-    "Dream 9.md",
-    "Dream 8.md",
-    "Dream 5.md"
+    "node_modules/whatwg-fetch/dist/fetch.umd.js.flow",
+    "node_modules/whatwg-fetch/dist/fetch.umd.js",
+    "node_modules/whatwg-fetch/package.json",
+    "node_modules/whatwg-fetch/fetch.js.flow",
+    "node_modules/whatwg-fetch/fetch.js",
+    "node_modules/whatwg-fetch/dist",
+    "node_modules/whatwg-fetch/README.md",
+    "node_modules/whatwg-fetch/LICENSE",
+    "node_modules/whatwg-fetch",
+    "node_modules/ollama/dist/shared/ollama.f6b57f53.d.ts",
+    "node_modules/ollama/dist/shared/ollama.f6b57f53.d.mts",
+    "node_modules/ollama/dist/shared/ollama.f6b57f53.d.cts",
+    "node_modules/ollama/README.md",
+    "node_modules/@langchain/ollama/README.md",
+    "node_modules/dunder-proto/README.md",
+    "node_modules/dunder-proto/CHANGELOG.md",
+    "node_modules/math-intrinsics/README.md",
+    "node_modules/math-intrinsics/CHANGELOG.md",
+    "node_modules/has-symbols/README.md",
+    "node_modules/has-symbols/CHANGELOG.md",
+    "node_modules/gopd/README.md",
+    "node_modules/gopd/CHANGELOG.md",
+    "node_modules/get-proto/README.md",
+    "node_modules/get-proto/CHANGELOG.md",
+    "node_modules/function-bind/README.md",
+    "node_modules/function-bind/CHANGELOG.md",
+    "node_modules/es-object-atoms/README.md",
+    "node_modules/es-object-atoms/CHANGELOG.md",
+    "node_modules/es-define-property/README.md",
+    "node_modules/es-define-property/CHANGELOG.md",
+    "node_modules/call-bind-apply-helpers/README.md",
+    "node_modules/call-bind-apply-helpers/CHANGELOG.md",
+    "node_modules/mime-db/README.md",
+    "node_modules/mime-db/HISTORY.md",
+    "node_modules/hasown/README.md",
+    "node_modules/hasown/CHANGELOG.md"
   ]
 }
