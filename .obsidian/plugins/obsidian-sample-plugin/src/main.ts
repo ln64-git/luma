@@ -12,17 +12,11 @@ export default class MyPlugin extends Plugin {
     this.addUI();
     this.addSettingTab(new SettingTab(this.app, this));
 
-    await clearLog(this.app) 
+    await clearLog(this.app)
 
     this.app.workspace.onLayoutReady(() => {
       runLuna(this.app);
     });
-  }
-
-
-  onclose() {
-    const path = "logs/luma-log.json";
-    this.app.vault.adapter.write(path, "");
   }
 
   private addUI() {

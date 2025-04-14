@@ -1,5 +1,5 @@
 import { App, Notice } from "obsidian";
-import { logToFile, logToFormattedFile } from "./logger";
+import { logToFormattedFile } from "./logger";
 import callOllama from "./ollama";
 
 export async function runLuna(app: App) {
@@ -10,17 +10,20 @@ export async function runLuna(app: App) {
 		return;
 	}
 
-	const firstFile = files[1]; // Adjust as needed
-	const content = await app.vault.read(firstFile);
+	let allText = "";
 
-	const response = await callOllama(app, content, {
-		systemPrompt: "Respond only with a haiku. Do not include any explanations, titles, or questions. Format your response as a 3-line haiku only.",
+	for (const file of files) {
+		const content = await app.vault.read(file);
+		allText += content + "\n\n";
+	}
+
+	const response = await callOllama(app, allText, {
+		systemPrompt: "Summarize the following collection of thoughts as a single 3-line haiku. Do not include any explanations or titles. Only respond with the haiku.",
 		model: "gemma3",
-		temperature: 0.3,
+		temperature: 0.8,
 	});
-
 
 	await logToFormattedFile(app, response.toString());
 
-	new Notice(`Logged: ${firstFile.name}`);
+	new Notice(`Logged haiku from ${files.length} notes.`);
 }
