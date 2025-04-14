@@ -10,18 +10,15 @@ export const DEFAULT_SETTINGS: LumaSettings = {
   mySetting: 'default'
 };
 
-export class SampleSettingTab extends PluginSettingTab {
+export class SettingTab extends PluginSettingTab {
   plugin: MyPlugin;
-
   constructor(app: App, plugin: MyPlugin) {
     super(app, plugin);
     this.plugin = plugin;
   }
-
   display(): void {
     const { containerEl } = this;
     containerEl.empty();
-
     new Setting(containerEl)
       .setName('Setting #1')
       .setDesc('It\'s a secret')

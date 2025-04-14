@@ -1,23 +1,25 @@
 // main.ts
 import { Notice, Plugin } from 'obsidian';
-import { SampleSettingTab } from './settings';
-import { DEFAULT_SETTINGS, LumaSettings } from './settings';
+import { SettingTab, DEFAULT_SETTINGS, LumaSettings } from './settings';
 import { SampleModal } from './modal';
 
 export default class MyPlugin extends Plugin {
 	settings: LumaSettings;
-
 	async onload() {
 		await this.loadSettings();
+		this.addUI();
+		this.registerCommands();
+		this.addSettingTab(new SettingTab(this.app, this));
+	}
 
-		const ribbonIconEl = this.addRibbonIcon('sparkle', 'Luma', () => {
+	private addUI() {
+		const ribbon = this.addRibbonIcon('sparkle', 'Luma', () => {
 			new Notice('This is a notice!');
 		});
-		ribbonIconEl.addClass('my-plugin-ribbon-class');
-
-		const statusBarItemEl = this.addStatusBarItem();
-		statusBarItemEl.setText('Luma running.');
-
+		ribbon.addClass('my-plugin-ribbon-class');
+		this.addStatusBarItem().setText('Luma running.');
+	}
+	private registerCommands() {
 		this.addCommand({
 			id: 'open-sample-modal-simple',
 			name: 'Run Luma',
@@ -25,22 +27,11 @@ export default class MyPlugin extends Plugin {
 				new SampleModal(this.app).open();
 			}
 		});
-
-		this.addSettingTab(new SampleSettingTab(this.app, this));
-
-		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
-			console.log('click', evt);
-		});
-
-		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
 	}
 
-	onunload() { }
-
-	async loadSettings() {
+	private async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
 	}
-
 	async saveSettings() {
 		await this.saveData(this.settings);
 	}
