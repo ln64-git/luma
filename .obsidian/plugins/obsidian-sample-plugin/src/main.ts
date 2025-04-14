@@ -1,31 +1,32 @@
 // main.ts
 import { Notice, Plugin } from 'obsidian';
 import { SettingTab, DEFAULT_SETTINGS, LumaSettings } from './settings';
-import { SampleModal } from './modal';
+import runLuna from './function/run-luna';
+
 
 export default class MyPlugin extends Plugin {
 	settings: LumaSettings;
 	async onload() {
 		await this.loadSettings();
 		this.addUI();
-		this.registerCommands();
 		this.addSettingTab(new SettingTab(this.app, this));
+
+		const path = "logs/luma-log.json";
+		this.app.vault.adapter.write(path, "");
+
+		this.app.workspace.onLayoutReady(() => {
+			runLuna(this.app);
+		});
+	}
+
+	onclose() {
+		const path = "logs/luma-log.json";
+		this.app.vault.adapter.write(path, "");
 	}
 
 	private addUI() {
-		const ribbon = this.addRibbonIcon('sparkle', 'Luma', () => {
-			new Notice('This is a notice!');
-		});
-		ribbon.addClass('my-plugin-ribbon-class');
-		this.addStatusBarItem().setText('Luma running.');
-	}
-	private registerCommands() {
-		this.addCommand({
-			id: 'open-sample-modal-simple',
-			name: 'Run Luma',
-			callback: () => {
-				new SampleModal(this.app).open();
-			}
+		this.addRibbonIcon('sparkle', 'Luma', () => {
+			// runLuna(this.app)
 		});
 	}
 
