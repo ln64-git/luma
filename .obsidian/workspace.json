@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4f6fe188f0d6342e",
+        "id": "34a0e451bb169d8d",
         "type": "tabs",
         "children": [
           {
-            "id": "8c784f7bb39f1fc3",
+            "id": "dc88637331ca0284",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "Dream 3.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "Dream 3"
             }
           }
         ]
@@ -74,13 +74,11 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 271.5
   },
   "right": {
     "id": "d56976b31f178d9d",
@@ -168,43 +166,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8c784f7bb39f1fc3",
+  "active": "d749b8fcba9922c1",
   "lastOpenFiles": [
+    "Luma/Entities/symbol - she.md",
+    "Luma/Entities/symbol - cathedral.md",
+    "Luma/Entities/symbol - match.md",
+    "Luma/Entities",
+    "Luma/Not Used/Dream 9.md",
+    "Luma/Entities/concept - silent_figure.md",
+    "Luma/Entities/concept - she.md",
+    "Luma/Entities/concept - drowning.md",
+    "Luma/Not Used/Untitled.md",
+    "Luma/Entities/symbol - stranger.md",
+    "Luma/Entities/symbol - motel_room.md",
+    "Luma/Entities/symbol - stage.md",
+    "Luma/Entities/symbol - dancing.md",
+    "Dream 3.md",
+    "Dream 1.md",
+    "Dream 2.md",
+    "Luma/Not Used/Dream 4.md",
+    "Luma/Entities/symbol - falling.md",
+    "Luma/Not Used",
+    "Luma/Entities2/concept - silence.md",
+    "Luma/Entities2/concept - drowning.md",
+    "Luma/Entities1/concept - the_woman.md",
+    "Luma/Entities2/symbol - she.md",
+    "Luma/Entities2/concept - she.md",
+    "Luma/Entities2/symbol - cathedral.md",
+    "Luma/Entities2/symbol - match.md",
+    "Luma/Entities2/symbol - stranger.md",
+    "Luma/Entities2",
+    "Luma/Entities1",
+    "Luma/Living Nodes",
+    "Luma",
+    "Untitled",
     "node_modules/whatwg-fetch/dist/fetch.umd.js.flow",
     "node_modules/whatwg-fetch/dist/fetch.umd.js",
-    "node_modules/whatwg-fetch/package.json",
-    "node_modules/whatwg-fetch/fetch.js.flow",
-    "node_modules/whatwg-fetch/fetch.js",
-    "node_modules/whatwg-fetch/dist",
-    "node_modules/whatwg-fetch/README.md",
-    "node_modules/whatwg-fetch/LICENSE",
-    "node_modules/whatwg-fetch",
-    "node_modules/ollama/dist/shared/ollama.f6b57f53.d.ts",
-    "node_modules/ollama/dist/shared/ollama.f6b57f53.d.mts",
-    "node_modules/ollama/dist/shared/ollama.f6b57f53.d.cts",
-    "node_modules/ollama/README.md",
-    "node_modules/@langchain/ollama/README.md",
-    "node_modules/dunder-proto/README.md",
-    "node_modules/dunder-proto/CHANGELOG.md",
-    "node_modules/math-intrinsics/README.md",
-    "node_modules/math-intrinsics/CHANGELOG.md",
-    "node_modules/has-symbols/README.md",
-    "node_modules/has-symbols/CHANGELOG.md",
-    "node_modules/gopd/README.md",
-    "node_modules/gopd/CHANGELOG.md",
-    "node_modules/get-proto/README.md",
-    "node_modules/get-proto/CHANGELOG.md",
-    "node_modules/function-bind/README.md",
-    "node_modules/function-bind/CHANGELOG.md",
-    "node_modules/es-object-atoms/README.md",
-    "node_modules/es-object-atoms/CHANGELOG.md",
-    "node_modules/es-define-property/README.md",
-    "node_modules/es-define-property/CHANGELOG.md",
-    "node_modules/call-bind-apply-helpers/README.md",
-    "node_modules/call-bind-apply-helpers/CHANGELOG.md",
-    "node_modules/mime-db/README.md",
-    "node_modules/mime-db/HISTORY.md",
-    "node_modules/hasown/README.md",
-    "node_modules/hasown/CHANGELOG.md"
+    "node_modules/whatwg-fetch/package.json"
   ]
 }
