@@ -1,18 +1,17 @@
 import { App, Notice, TFile, normalizePath } from "obsidian";
 import callOllama from "./ollama";
-import { clusterNotes, getEmbedding } from "./embeddings";
-import { logToFormattedFile } from "./logger";
 import { renderEntityNote } from "./templates/renderEntityNote";
 import { generateEntitySummaryPrompt } from "./prompts/generateEntitySummaryPrompt";
-import { NoteData, Cluster } from "types/types";
+import { Cluster } from "types/types";
 
 import { z } from "zod";
 import { StructuredOutputParser } from "langchain/output_parsers";
+import { clusterNotes } from "./cluster";
+import { getObsidianNotes } from "./obsidian";
 
 const LumaEntitySchema = z.array(
 	z.object({
 		entity: z.string(),
-		type: z.enum(["symbol", "concept", "emotion"]),
 		emotions: z.array(z.string()).optional(),
 		summary: z.string().optional(),
 		quote: z.string().optional(),
@@ -21,34 +20,23 @@ const LumaEntitySchema = z.array(
 	})
 );
 
-type LumaEntity = z.infer<typeof LumaEntitySchema>;
-
 const parser = StructuredOutputParser.fromZodSchema(LumaEntitySchema);
 const formatInstructions = parser.getFormatInstructions();
-
-function extractJson(raw: string): string {
-	const match = raw.match(/```json\s*([\s\S]+?)```/);
-	if (!match) throw new Error("No JSON block found in response.");
-	return match[1];
-}
 
 export async function runLuna(app: App) {
 	new Notice("Luma is analyzing your vault...");
 
-	const files = app.vault
-		.getMarkdownFiles()
-		.filter(file => !file.path.startsWith("Luma/"));
-	if (files.length === 0) {
-		new Notice("No markdown files found.");
-		return;
-	}
+	// syncNotesToDatabase(app);
+	// renderDatabaseEmbeddings(app);
+	// renderDatabaseClusters(app, 0.85);
 
-	const notes: NoteData[] = [];
-	for (const file of files) {
-		const content = await app.vault.read(file);
-		const vector = await getEmbedding(content);
-		notes.push({ file, content, vector });
-	}
+	// renderEntities(app);
+	// getEntities(app);
+
+	// renderObsidianVault(app);
+
+	const notes = await getObsidianNotes(app)
+
 
 	const clusters = clusterNotes(notes, 0.85);
 
@@ -86,7 +74,6 @@ ${combined}`;
 			const first = parsed?.[0];
 
 			cluster.label = first?.entity || `Cluster-${clusterNum}`;
-			cluster.type = first?.type || "Concept";
 			cluster.emotions = first?.emotions || [];
 			cluster.summary = first?.summary || "";
 			cluster.quote = first?.quote || "";
@@ -136,8 +123,6 @@ ${combined}`;
 			const parsed = JSON.parse(json);
 
 			const content = renderEntityNote({
-				label,
-				type,
 				summary: parsed.summary,
 				interpretation: parsed.interpretation,
 				connections: parsed.connections,
@@ -161,11 +146,15 @@ ${combined}`;
 				await app.vault.create(filePath, content);
 				console.log(`✅ Created: ${filePath}`);
 			}
-
 			new Notice(`Luma: Updated entity → ${label}`);
-
 		} catch (err) {
 			console.error(`❌ Failed to parse entity summary for ${label}:`, err);
 		}
 	}
+}
+
+function extractJson(raw: string): string {
+	const match = raw.match(/```json\s*([\s\S]+?)```/);
+	if (!match) throw new Error("No JSON block found in response.");
+	return match[1];
 }

@@ -1,8 +1,6 @@
 import { NoteData } from "types/types";
 
 export function renderEntityNote(params: {
-  label: string;
-  type: string;
   summary: string;
   interpretation: string;
   connections: string[];
@@ -10,8 +8,6 @@ export function renderEntityNote(params: {
   notes: NoteData[];
 }) {
   const {
-    label,
-    type,
     summary,
     interpretation,
     connections,
@@ -24,9 +20,9 @@ export function renderEntityNote(params: {
   const emotionTags = (emotions || []).map(e =>
     `#emotion/${e.toLowerCase().replace(/\s+/g, "_")}`
   );
-  const tags = [`#luma/${type}`, ...emotionTags, `#dream-symbol`].join(" ");
+  const tags = [`#luma/`, ...emotionTags, `#dream-symbol`].join(" ");
 
-  return `**Entity Type:** ${type}  
+  return `
 **Recurring Emotions:** ${emotions?.join(", ") || "None"}  
 **Appears In:**  
 ${sourceLinks}
