@@ -13,58 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Luma/Entities/symbol - she.md",
+                "file": "Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "symbol - she"
-            }
-          },
-          {
-            "id": "96c8dbe30f13cc73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Luma/Entities/symbol - she.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "symbol - she"
-            }
-          },
-          {
-            "id": "8c46b9cff6e6df00",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Luma/Entities/concept - social_anxiety.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "concept - social_anxiety"
-            }
-          },
-          {
-            "id": "f4c437422e2395d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Luma/Entities/concept - social_anxiety.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "concept - social_anxiety"
+              "title": "Untitled"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -96,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "\"# Contributing\\n\\nHey, thanks for wanting to contribute.\\n\\nBefore you open a PR, make sure to open an issue and discuss the problem you want to solve. I will not consider PRs without issues.\\n\\nI use [gitmoji](https://gitmoji.dev/) for my commit messages because I think it's fun. I encourage you to do the same, but won't enforce it.\\n\\nI check PRs and issues very rarely so please be patient.\\n\"",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -209,36 +166,36 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f4c437422e2395d4",
+  "active": "dc88637331ca0284",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Luma/Entities/symbol - match.md",
-    "Luma/Entities/concept - social_anxiety.md",
-    "Dream 1.md",
-    "Dream 2.md",
+    "Luma/Entities/she.md",
+    "Luma/Entities/tired_of_being_worshiped.md",
+    "Luma/Entities/you_unspecified.md",
+    "Luma/Entities/cathedral.md",
+    "Luma/Entities/match.md",
+    "Luma/Entities/save_face.md",
+    "Luma/Entities/worshiped.md",
     "Dream 3.md",
+    "Luma/Luma Reflection.md",
+    "Luma/Entities/rain.md",
+    "Luma/Entities/guard_down.md",
+    "Luma/Entities/you_flauting.md",
+    "Luma/Entities/dark_place.md",
+    "Luma/Entities/headspace.md",
     "Luma/Entities/symbol - cathedral.md",
+    "Luma/Entities/symbol - fire.md",
+    "Luma/Entities/symbol - jacket.md",
     "Luma/Entities/symbol - she.md",
-    "Luma/Not Used/Dream 4.md",
+    "Luma/Entities/symbol - headspace.md",
+    "Luma/Entities/symbol - save_face.md",
+    "Luma/Entities/symbol - thunder.md",
+    "Luma/Entities/symbol - unlabeled.md",
+    "Untitled.md",
+    "Luma/Entities/symbol - the_woman.md",
+    "Luma/Entities/symbol - destruction.md",
+    "Dream 2.md",
     "Luma/Entities",
-    "Luma/Not Used/Dream 9.md",
-    "Luma/Entities/concept - silent_figure.md",
-    "Luma/Entities/concept - she.md",
-    "Luma/Entities/concept - drowning.md",
-    "Luma/Not Used/Untitled.md",
-    "Luma/Entities/symbol - stranger.md",
-    "Luma/Entities/symbol - motel_room.md",
-    "Luma/Entities/symbol - stage.md",
-    "Luma/Entities/symbol - dancing.md",
-    "Luma/Entities/symbol - falling.md",
     "Luma/Not Used",
-    "Luma/Entities2/concept - silence.md",
-    "Luma/Entities2/concept - drowning.md",
-    "Luma/Entities1/concept - the_woman.md",
-    "Luma/Entities2/symbol - she.md",
-    "Luma/Entities2/concept - she.md",
-    "Luma/Entities2/symbol - cathedral.md",
-    "Luma/Entities2/symbol - match.md",
     "Luma/Entities2",
     "Luma/Entities1",
     "Luma/Living Nodes",

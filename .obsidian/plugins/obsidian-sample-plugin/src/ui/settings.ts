@@ -1,6 +1,6 @@
 // settings.ts
 import { App, PluginSettingTab, Setting } from 'obsidian';
-import type MyPlugin from './luma';
+import MyPlugin from 'src/main';
 
 export interface LumaSettings {
   mySetting: string;

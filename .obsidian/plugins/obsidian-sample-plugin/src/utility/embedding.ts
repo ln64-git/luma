@@ -1,4 +1,4 @@
-import { Cluster, NoteData } from "types/types";
+import { Cluster, NoteData } from "src/types/types";
 import { OllamaEmbeddings } from "@langchain/ollama";
 
 export async function getEmbedding(text: string, model = "nomic-embed-text"): Promise<number[]> {

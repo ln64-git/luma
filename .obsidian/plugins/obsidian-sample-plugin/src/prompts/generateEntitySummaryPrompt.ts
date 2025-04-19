@@ -1,29 +1,33 @@
-
-
 export function generateEntitySummaryPrompt(label: string, combinedText: string): string {
   return `
-You are an expert symbolic dream interpreter.
+You are a symbolic dream interpreter.
 
-The following dream entries all involve the recurring symbol or concept "${label}". 
-Your job is to synthesize the emotional meaning, recurring themes, and evolution of this entity across these appearances.
+You will be given a group of dreams that may contain 1–3 recurring entities, themes, or symbolic figures. Your job is to identify each one separately.
 
-Return:
-- A 2–3 sentence summary of its symbolic or emotional role
-- An interpretation of what this entity may represent
-- Up to 3 related symbolic or emotional connections
+For each, return:
+- "entity": short symbolic label
+- "summary": its role or emotional tone
+- "interpretation": what this symbol represents psychologically
+- "quote": a key quote or moment that reflects it
+- "connections": related symbolic or emotional concepts (1–3)
 
-Return a valid JSON object enclosed in triple backticks, like this:
+Output a JSON array in triple backticks like this:
+
 \`\`\`json
-{
-  "summary": "...",
-  "interpretation": "...",
-  "connections": ["...", "..."]
-}
+[
+  {
+    "entity": "example",
+    "summary": "...",
+    "interpretation": "...",
+    "quote": "A relevant quote.",
+    "connections": ["...", "..."]
+  }
+]
 \`\`\`
 
-Only output this JSON. Do not explain.
+Respond ONLY with JSON. No explanations.
 
-Dream Notes:
+Dreams to analyze:
 ${combinedText}
 `.trim();
 }

@@ -1,9 +1,8 @@
-// main.ts
 import { Notice, Plugin } from 'obsidian';
-import { SettingTab, DEFAULT_SETTINGS, LumaSettings } from './settings';
+import { SettingTab, DEFAULT_SETTINGS, LumaSettings } from './ui/settings';
 import { runLuna } from './luma';
-import { clearLog } from './logger';
-
+import { clearLog } from './utility/logger';
+import { initDB, persistDB } from './db';
 
 export default class MyPlugin extends Plugin {
   settings: LumaSettings;
@@ -12,16 +11,22 @@ export default class MyPlugin extends Plugin {
     this.addUI();
     this.addSettingTab(new SettingTab(this.app, this));
 
-    await clearLog(this.app)
+    await initDB(this.app); // ✅ important to await
+    await clearLog(this.app);
 
     this.app.workspace.onLayoutReady(() => {
       runLuna(this.app);
     });
   }
 
+  async onunload() {
+    await persistDB(this.app); // ✅ epnsure it's saved to vault
+    new Notice('💾 Luma: Database saved');
+  }
+
   private addUI() {
     this.addRibbonIcon('sparkle', 'Luma', () => {
-      // runLuna(this.app)
+      // runLuna(this.app);
     });
   }
 
