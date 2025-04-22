@@ -147,13 +147,23 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "4f8222b6f3cad267",
+            "type": "leaf",
+            "state": {
+              "type": "luma-sidebar-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Luma Dashboard"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -166,7 +176,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "dc88637331ca0284",
+  "active": "4f8222b6f3cad267",
   "lastOpenFiles": [
     "Luma/Entities/she.md",
     "Luma/Entities/tired_of_being_worshiped.md",
