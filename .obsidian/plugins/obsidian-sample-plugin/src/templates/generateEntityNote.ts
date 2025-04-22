@@ -1,7 +1,7 @@
 import { NoteData } from "src/types/types";
 
 export function renderEntityNote(params: {
-  label: string; // 🔥 ADD THIS
+  label: string; 
   summary: string;
   interpretation: string;
   connections: string[];

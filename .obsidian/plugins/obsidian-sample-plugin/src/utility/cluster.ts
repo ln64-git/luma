@@ -1,15 +1,9 @@
 import { App, Notice, TFile } from "obsidian";
 import { getDB } from "src/db";
 import { Cluster, NoteData } from "src/types/types";
+import { generateClusterMetadata } from "src/templates/generateClusterMetadata";
 
-function cosineSim(vecA: number[], vecB: number[]): number {
-  const dot = vecA.reduce((acc, v, i) => acc + v * vecB[i], 0);
-  const normA = Math.sqrt(vecA.reduce((acc, v) => acc + v * v, 0));
-  const normB = Math.sqrt(vecB.reduce((acc, v) => acc + v * v, 0));
-  return dot / (normA * normB);
-}
-
-export async function renderDatabaseClusters(app: App, threshold = 0.85): Promise<Cluster[]> {
+export async function generateNoteClusters(app: App, threshold = 0.25): Promise<Cluster[]> {
   new Notice("🔍 Clustering notes from Luma database...");
 
   const db = getDB();
@@ -25,11 +19,9 @@ export async function renderDatabaseClusters(app: App, threshold = 0.85): Promis
 
   for (const note of notes) {
     let matched = false;
-
     for (const cluster of clusters) {
       const sims = cluster.notes.map(n => cosineSim(n.vector, note.vector));
       const avgSim = sims.reduce((a, b) => a + b, 0) / sims.length;
-
       if (avgSim >= threshold) {
         cluster.notes.push(note);
         matched = true;
@@ -38,10 +30,29 @@ export async function renderDatabaseClusters(app: App, threshold = 0.85): Promis
     }
 
     if (!matched) {
-      clusters.push({ notes: [note] });
+      clusters.push({
+        title: "Untitled",
+        description: "Pending metadata generation...",
+        notes: [note]
+      });
     }
+  }
+
+  // Add titles + descriptions to each cluster
+  for (const cluster of clusters) {
+    const meta = await generateClusterMetadata(app, cluster.notes);
+    cluster.title = meta.title;
+    cluster.description = meta.description;
   }
 
   new Notice(`✅ Clustered ${notes.length} notes into ${clusters.length} clusters.`);
   return clusters;
+}
+
+
+function cosineSim(vecA: number[], vecB: number[]): number {
+  const dot = vecA.reduce((acc, v, i) => acc + v * vecB[i], 0);
+  const normA = Math.sqrt(vecA.reduce((acc, v) => acc + v * v, 0));
+  const normB = Math.sqrt(vecB.reduce((acc, v) => acc + v * v, 0));
+  return dot / (normA * normB);
 }

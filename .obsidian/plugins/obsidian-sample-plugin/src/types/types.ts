@@ -13,6 +13,8 @@ export type NoteData = {
 
 
 export type Cluster = {
+  title: string;
+  description: string;
   notes: NoteData[];
 };
 

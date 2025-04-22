@@ -154,6 +154,26 @@
 - Related to [[Unresolved Trauma]]
 - Related to [[Hidden Desir...
 
+- **tired_of_being_worshiped**
+# 🔮 undefined Symbol
+
+**Appears In:**  
+- [[Dream 2.md]]
+
+---
+
+## 🔍 Overview
+
+> Feeling of Burden and Performance
+
+---
+
+## 🔗 Connections
+
+- Related to [[Pressure]]
+- Related to [[False Identity]]
+-...
+
 - **worshiped**
 # 🔮 undefined Symbol
 
@@ -211,23 +231,3 @@
 
 - Related to [[Heartbreak]]
 - Related to [...
-
-- **tired_of_being_worshiped**
-# 🔮 undefined Symbol
-
-**Appears In:**  
-- [[Dream 2.md]]
-
----
-
-## 🔍 Overview
-
-> Feeling of Burden and Performance
-
----
-
-## 🔗 Connections
-
-- Related to [[Pressure]]
-- Related to [[False Identity]]
--...

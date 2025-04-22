@@ -1,9 +1,9 @@
 import { App, Notice, normalizePath, TFile, TFolder } from "obsidian";
 import callOllama from "../utility/langchain";
-import { renderEntityNote } from "../templates/renderEntityNote";
+import { renderEntityNote } from "../templates/generateEntityNote";
 import { generateEntitySummaryPrompt } from "../prompts/generateEntitySummaryPrompt";
 import { Cluster } from "../types/types";
-import { renderDatabaseClusters } from "./cluster";
+import { generateNoteClusters } from "./cluster";
 
 export async function generateEntityNotes(app: App, label: string, clusters: Cluster[]) {
   console.log(`🔍 Generating entity notes for label group: ${label}`);
@@ -79,15 +79,23 @@ function extractJson(raw: string): string {
 }
 
 export async function generateEntities(app: App, threshold: number = 0.85): Promise<void> {
-  const clusters = await renderDatabaseClusters(app, threshold); // returns Record<string, Cluster[]>
+  const clusters = await generateNoteClusters(app, threshold); // returns Record<string, Cluster[]>
 
-  for (const label in clusters) {
-    const result = await generateEntityNotes(app, label, [clusters[label]]);
-    for (const entity of result) {
-      await writeEntityToVault(app, entity.label, entity.fileName, entity.content);
-    }
-    console.log(`💾 Written entity notes to vault for label: ${label}`);
-  }
+  const clusterLog = clusters.map(cluster => ({
+    title: cluster.title,
+    description: cluster.description
+  }));
+
+  console.log(`🔍 Clusters: ${JSON.stringify(clusterLog, null, 2)}`);
+
+
+  // for (const label in clusters) {
+  //   const result = await generateEntityNotes(app, label, [clusters[label]]);
+  //   for (const entity of result) {
+  //     await writeEntityToVault(app, entity.label, entity.fileName, entity.content);
+  //   }
+  //   console.log(`💾 Written entity notes to vault for label: ${label}`);
+  // }
 
   console.log(`✅ Entity generation completed`);
 }
