@@ -24,6 +24,7 @@ export async function generateNoteClusters(app: App, threshold = 0.25): Promise<
       const avgSim = sims.reduce((a, b) => a + b, 0) / sims.length;
       if (avgSim >= threshold) {
         cluster.notes.push(note);
+        cluster.size = cluster.notes.length;
         matched = true;
         break;
       }
@@ -33,7 +34,9 @@ export async function generateNoteClusters(app: App, threshold = 0.25): Promise<
       clusters.push({
         title: "Untitled",
         description: "Pending metadata generation...",
-        notes: [note]
+        notes: [note],
+        threshold,
+        size: 1
       });
     }
   }

@@ -16,7 +16,7 @@ export async function runLuna(app: App) {
 		description: cluster.description
 	}));
 	console.log(`🔍 Clusters: ${JSON.stringify(clusterLog, null, 2)}`)
-		;
+	
 	// 3. Final output step: canvas, summary, haiku, graph, etc
 	await generateLuna(app);
 

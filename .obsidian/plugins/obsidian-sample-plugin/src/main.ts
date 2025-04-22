@@ -15,7 +15,7 @@ export default class MyPlugin extends Plugin {
     await clearLog(this.app);
 
     this.app.workspace.onLayoutReady(() => {
-      runLuna(this.app);
+      // runLuna(this.app);
     });
   }
 
@@ -26,7 +26,7 @@ export default class MyPlugin extends Plugin {
 
   private addUI() {
     this.addRibbonIcon('sparkle', 'Luma', () => {
-      // runLuna(this.app);
+      runLuna(this.app);
     });
   }
 

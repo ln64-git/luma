@@ -15,8 +15,11 @@ export type NoteData = {
 export type Cluster = {
   title: string;
   description: string;
+  threshold: number;
+  size: number;
   notes: NoteData[];
 };
+
 
 export interface NoteEntry {
   id: string;
