@@ -1,5 +1,5 @@
 import { Plugin, } from 'obsidian';
-import runDailyNoteSynthesis from './commands/run-daily-note-synthesis';
+import runDailyNoteSynthesis from './daily-note-synth/run-daily-note-synth';
 
 // Remember to rename these classes and interfaces!
 
