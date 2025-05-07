@@ -1,12 +1,13 @@
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { ChatOllama } from "@langchain/ollama";
 
-// Default configuration constants
-const DEFAULT_SYSTEM_PROMPT = "You are a call and response assistant.";
+const SYSTEM_PROMPT_TEMPLATE =
+  "You are a call-and-response assistant. Keep replies clear, concise. Your response must be within {{TOKEN_LIMIT}} tokens.";
+
 const DEFAULT_MODEL = "gemma3";
 const DEFAULT_TEMPERATURE = 0.7;
 const DEFAULT_MAX_RETRIES = 5;
-const DEFAULT_NUM_PREDICT = 16;
+const DEFAULT_NUM_PREDICT = 32;
 
 interface CallOllamaOptions {
   prompt?: string;
@@ -21,7 +22,7 @@ export default async function callOllama(
   options: CallOllamaOptions = {}
 ) {
   const {
-    prompt = DEFAULT_SYSTEM_PROMPT,
+    prompt,
     model = DEFAULT_MODEL,
     temperature = DEFAULT_TEMPERATURE,
     maxRetries = DEFAULT_MAX_RETRIES,
@@ -35,8 +36,12 @@ export default async function callOllama(
     numPredict,
   });
 
+
+  const systemPrompt = SYSTEM_PROMPT_TEMPLATE.replace("{{TOKEN_LIMIT}}", numPredict.toString());
+  const fullSystemPrompt = [systemPrompt, prompt].filter(Boolean).join('\n\n');
+
   const messages = [
-    new SystemMessage(prompt),
+    new SystemMessage(fullSystemPrompt),
     new HumanMessage(inputText),
   ];
 
