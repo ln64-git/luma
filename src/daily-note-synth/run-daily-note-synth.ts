@@ -1,4 +1,4 @@
-import { TFile, App, } from 'obsidian';
+import { TFile, App, Notice, } from 'obsidian';
 import { getNotesFromFolder, } from './utils';
 import { synthesizeDailyNote } from './synthesize-daily-note';
 
@@ -17,7 +17,15 @@ export default function runDailyNoteSynthesis(app: App) {
     app.vault.read(file)
       .then(async (content: string) => {
         const processedContent = await synthesizeDailyNote(content);
-        console.log("content: ", processedContent);
+        // write to new file 
+        const newFileName = `${file.name.replace('.md', '')}-synthesized.md`;
+        const newFile = app.vault.getAbstractFileByPath(newFileName);
+        if (newFile) {
+          console.log(`File ${newFileName} already exists. Skipping.`);
+          return;
+        }
+        await app.vault.create(newFileName, processedContent);
+        new Notice(`Synthesized daily note created: ${newFileName}`);
       });
   });
 }

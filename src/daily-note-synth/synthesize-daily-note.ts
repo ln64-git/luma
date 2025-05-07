@@ -1,18 +1,21 @@
 import { Notice } from "obsidian";
 import callOllama from "src/lib/langchain";
-
-const options = {
-  prompt: "what is this?",
-};
+import { SYSTEM_PROMPT_ORGANIZER } from "./format-note";
 
 export async function synthesizeDailyNote(content: string): Promise<string> {
   new Notice("Synthesizing daily note...");
-  const response = await callOllama(content, options);
+
+  const systemPrompt = SYSTEM_PROMPT_ORGANIZER;
+
+  const response = await callOllama(content, {
+    prompt: systemPrompt,
+  });
+
   if (!response.text) {
     console.error("Error in synthesis: No text returned");
-  } else {
     new Notice("Synthesis failed!");
+    return content; // fallback to raw
   }
 
-  return response.text
+  return response.text;
 }
