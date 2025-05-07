@@ -1,9 +1,8 @@
-import { TFile, App, Notice } from 'obsidian';
-import { formattedNote, getNotesFromFolder, getTemplate } from './utils';
-import { synthisizeDatilyNote } from './synthisize-daily-note';
+import { TFile, App, } from 'obsidian';
+import { getNotesFromFolder, } from './utils';
+import { synthesizeDailyNote } from './synthesize-daily-note';
 
 export default function runDailyNoteSynthesis(app: App) {
-  new Notice("Daily Note Synthesis is running...");
   const dailyNotes = getNotesFromFolder(app, "Daily Notes");
 
   if (dailyNotes.length === 0) {
@@ -11,18 +10,14 @@ export default function runDailyNoteSynthesis(app: App) {
     return;
   }
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toLocaleDateString('sv'); // 'sv' locale gives YYYY-MM-DD
   const pastDailyNotes = dailyNotes.filter((file: TFile) => file.name !== `${today}.md`);
-
-  const template = getTemplate(app, "Daily Note Template.md");
 
   pastDailyNotes.forEach((file: TFile) => {
     app.vault.read(file)
-      .then((content: string) => {
-        if (!formattedNote(app, content, template?.path ?? '')) {
-          const processedContent = synthisizeDatilyNote(content)
-          console.log("content: ", processedContent);
-        }
+      .then(async (content: string) => {
+        const processedContent = await synthesizeDailyNote(content);
+        console.log("content: ", processedContent);
       });
   });
 }

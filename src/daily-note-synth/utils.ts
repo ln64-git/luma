@@ -13,22 +13,19 @@ export function getTemplate(app: App, templateName: string): TFile | null {
 
 export function getNotesFromFolder(app: App, folderPath: string): TFile[] {
   const vault = app.vault;
-  const files = vault.getMarkdownFiles()
-    .filter((file: TFile) => file.path.startsWith(folderPath + '/'))
-    .sort((a: TFile, b: TFile) => a.name.localeCompare(b.name));
+  const allFiles = vault.getMarkdownFiles();
+
+  const files = allFiles.filter((file: TFile) => {
+    const matches = file.path.startsWith(folderPath + '/');
+    return matches;
+  });
+
   if (files.length === 0) {
     console.log(`No notes found in ${folderPath}`);
   }
   return files;
 }
 
-export function formattedNote(app: App, content: string, templatePath: string): boolean {
-  const vault = app.vault;
-  const template = vault.getMarkdownFiles()
-    .filter((file: TFile) => file.path === templatePath);
-  if (template.length === 0) {
-    console.log(`Template ${templatePath} not found.`);
-    return false;
-  }
-  return content.includes(template[0].basename);
+export function formattedNote(app: App, content: string,): boolean {
+  return true;
 }
