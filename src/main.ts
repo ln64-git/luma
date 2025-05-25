@@ -17,7 +17,7 @@ export default class MyPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 		this.app.workspace.onLayoutReady(() => {
-			runDailyNoteSynthesis(this.app);
+			// runDailyNoteSynthesis(this.app);
 		});
 
 		// This adds a simple command that can be triggered anywhere
